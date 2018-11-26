@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,16 @@ namespace MyDB
         public MainWindow()
         {
             InitializeComponent();
+
+            SqlConnection sqlConnection = new SqlConnection();
+            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder();
+
+            connectionStringBuilder.UserID = "sa";
+            connectionStringBuilder.Password = "1234@";
+            connectionStringBuilder.InitialCatalog = "MyDB";
+            connectionStringBuilder.DataSource = "localhost";
+            connectionStringBuilder.ConnectTimeout = 30;
+            sqlConnection.ConnectionString = connectionStringBuilder.ConnectionString;
         }
     }
 }
